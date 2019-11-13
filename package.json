@@ -1,6 +1,6 @@
 {
   "name": "pollenium-wallflower",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "",
   "main": "node/index.js",
   "dependencies": {
