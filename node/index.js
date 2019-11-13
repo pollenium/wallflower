@@ -10,7 +10,7 @@ var eth_sig_util_1 = __importDefault(require("eth-sig-util"));
 var Wallflower = /** @class */ (function () {
     function Wallflower(privateKey) {
         this.privateKey = privateKey;
-        this.ejsWallet = ethereumjs_wallet_1["default"].fromPrivateKey(privateKey);
+        this.ejsWallet = ethereumjs_wallet_1["default"].fromPrivateKey(privateKey.getBuffer());
     }
     Wallflower.prototype.getPublicKey = function () {
         if (this.publicKey) {
