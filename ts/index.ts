@@ -10,7 +10,7 @@ export class Wallflower {
   address: Buttercup;
 
   constructor(public privateKey: Buttercup) {
-    this.ejsWallet = EjsWallet.fromPrivateKey(privateKey)
+    this.ejsWallet = EjsWallet.fromPrivateKey(privateKey.getBuffer())
   }
   getPublicKey(): Buttercup {
     if (this.publicKey) {
