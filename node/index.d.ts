@@ -10,4 +10,5 @@ export declare class Wallflower {
     getPublicKey(): Buttercup;
     getAddress(): Buttercup;
     getPersonalSignature(personalMessage: Buttercup): Ilex;
+    static generate(): Wallflower;
 }

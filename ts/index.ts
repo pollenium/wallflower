@@ -35,7 +35,7 @@ export class Wallflower {
       )
     )
   }
-  static generate(): Buttercup {
+  static generate(): Wallflower {
     return new Wallflower(Buttercup.random(32))
   }
 }

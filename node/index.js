@@ -31,6 +31,9 @@ var Wallflower = /** @class */ (function () {
             data: personalMessage.getPhex()
         })));
     };
+    Wallflower.generate = function () {
+        return new Wallflower(pollenium_buttercup_1.Buttercup.random(32));
+    };
     return Wallflower;
 }());
 exports.Wallflower = Wallflower;
