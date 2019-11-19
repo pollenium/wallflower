@@ -1,14 +1,12 @@
-import { Buttercup } from 'pollenium-buttercup';
 import { Ilex } from 'pollenium-ilex';
 import EjsWallet from 'ethereumjs-wallet';
 export declare class Wallflower {
-    privateKey: Buttercup;
+    privateKey: Uint8Array;
     ejsWallet: EjsWallet;
-    publicKey: Buttercup;
-    address: Buttercup;
-    constructor(privateKey: Buttercup);
-    getPublicKey(): Buttercup;
-    getAddress(): Buttercup;
-    getPersonalSignature(personalMessage: Buttercup): Ilex;
-    static generate(): Wallflower;
+    private publicKey;
+    private address;
+    constructor(privateKey: Uint8Array);
+    getPublicKey(): Uint8Array;
+    getAddress(): Uint8Array;
+    getPersonalSignature(personalMessage: Uint8Array): Ilex;
 }

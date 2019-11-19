@@ -1,41 +1,35 @@
-import { Buttercup } from 'pollenium-buttercup'
+import * as uvaursi from 'pollenium-uvaursi'
 import { Ilex } from 'pollenium-ilex'
 import EjsWallet from 'ethereumjs-wallet'
 import ethSigUtil from 'eth-sig-util'
 
 export class Wallflower {
 
-  ejsWallet: EjsWallet;
-  publicKey: Buttercup;
-  address: Buttercup;
+  public ejsWallet: EjsWallet;
+  private publicKey: Uint8Array;
+  private address: Uint8Array;
 
-  constructor(public privateKey: Buttercup) {
-    this.ejsWallet = EjsWallet.fromPrivateKey(privateKey.getBuffer())
+  constructor(public privateKey: Uint8Array) {
+    this.ejsWallet = EjsWallet.fromPrivateKey(privateKey)
   }
-  getPublicKey(): Buttercup {
+  getPublicKey(): Uint8Array {
     if (this.publicKey) {
       return this.publicKey
     }
-    this.publicKey = Buttercup.fromBuffer(this.ejsWallet.getPublicKey())
+    this.publicKey = new Uint8Array(this.ejsWallet.getPublicKey())
     return this.publicKey
   }
-  getAddress(): Buttercup {
+  getAddress(): Uint8Array {
     if (this.address) {
       return this.address
     }
-    this.address = Buttercup.fromBuffer(this.ejsWallet.getAddress())
+    this.address = new Uint8Array(this.ejsWallet.getAddress())
     return this.address
   }
-  getPersonalSignature(personalMessage: Buttercup): Ilex {
-    return Ilex.fromConcatenation(
-      Buttercup.fromPhex(
-        ethSigUtil.personalSign(this.privateKey.getBuffer(), {
-          data: personalMessage.getPhex()
-        })
-      )
-    )
-  }
-  static generate(): Wallflower {
-    return new Wallflower(Buttercup.random(32))
+  getPersonalSignature(personalMessage: Uint8Array): Ilex {
+    const hexishConcatenation = ethSigUtil.personalSign(new Buffer(this.privateKey), {
+      data: uvaursi.toHex(personalMessage)
+    })
+    return Ilex.fromConcatenation(uvaursi.fromHexish(hexishConcatenation))
   }
 }

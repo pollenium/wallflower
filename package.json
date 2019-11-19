@@ -4,10 +4,11 @@
   "description": "",
   "main": "node/index.js",
   "dependencies": {
+    "@types/node": "^12.12.11",
     "eth-sig-util": "^2.5.0",
     "ethereumjs-wallet": "^0.6.3",
-    "pollenium-buttercup": "^3.1.1",
-    "pollenium-ilex": "^1.0.0"
+    "pollenium-ilex": "^3.0.0",
+    "pollenium-uvaursi": "^1.1.0"
   },
   "devDependencies": {
     "tsc": "^1.20150623.0",
